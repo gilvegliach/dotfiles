@@ -1,0 +1,14 @@
+#!/bin/bash
+fname='temp'
+bak_ext='bak'
+tar_ext='tar'
+
+set -e
+
+echo "Start pulling files"
+adb backup  -f "${fname}.${bak_ext}"  de.zalando.mobile
+dd if="${fname}.${bak_ext}"  bs=1 skip=24|openssl zlib -d > "${fname}.${tar_ext}"
+tar xf "${fname}.${tar_ext}" > /dev/null
+rm "${fname}.${bak_ext}"
+rm "${fname}.${tar_ext}"
+echo "Done, the files in apps/"

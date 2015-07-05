@@ -1,0 +1,8 @@
+alias cd..='cd ..'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias ~='cd ~'
+alias s='ls'
+alias sl='ls -l'
+alias t='tree -L 2'

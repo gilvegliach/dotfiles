@@ -1,0 +1,3 @@
+alias curr_activity="adb shell dumpsys window windows | grep -E 'mCurrentFocus|mFocusedApp'"
+alias dex2jar='d2j-dex2jar.sh'
+alias i='adb install'
