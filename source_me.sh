@@ -3,22 +3,42 @@
 # Source this file in your .profile or .bash_profile. This file
 # imports bash functions and aliases and adds executables to PATH
 #
-scripts_dir="~/Scripts"
-#TODO: fix these two variables
-#functions_dir="${scripts_dir}/functions"
-#functions_files=${scripts_dir}/functions/*
 
-if [ -d ~/Scripts/functions ]; then
-    for file in ~/Scripts/functions/*; do
-        source "$file"
-    done
-fi
+# Brace expansion is evaluated before parameter expansion, so we
+# use eval to evaluate the assigments twice: it first expands the
+# parameters and then performs the brace expansion during the eval.
+# The results are put in arrays to make it easier to loop through
 
-if [ -d ~/Scripts/aliases ]; then
-    for file in ~/Scripts/aliases/*; do
-        source "$file"
-    done
-fi
+root="~/Scripts"
+functs=( `eval echo "${root}/{public,private}/functions"` )
+aliases=( `eval echo "${root}/{public,private}/aliases"` ) 
+execs=( `eval echo "${root}/{public,private}/executables"` ) 
 
-executables_dir="${scripts_dir}/executables"
-export PATH=$PATH:"$executables_dir"
+for fun in $functs; do
+    if [ -d $fun ]; then
+        for file in $fun/*; do
+            source "$file"
+        done
+    fi
+done
+
+for als in $aliases; do
+    if [ -d $als ]; then
+        for file in $als/*; do
+            source "$file"
+        done
+    fi
+done
+
+for exc in $execs; do
+   export PATH=$PATH:"$exc"
+done
+
+unset fun
+unset als
+unset exc
+
+unset root
+unset functs
+unset execs
+unset file

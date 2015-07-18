@@ -1,5 +1,2 @@
-# Work
-aliases/zalando
-
-# Personal
-executables/vifm_launcher.sh
+# Machine private scripts
+private/*
