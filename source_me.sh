@@ -14,7 +14,10 @@ functs=( `eval echo "${root}/{public,private}/functions"` )
 aliases=( `eval echo "${root}/{public,private}/aliases"` ) 
 execs=( `eval echo "${root}/{public,private}/executables"` ) 
 
-for fun in $functs; do
+# Termporary, remove
+source ~/Scripts/private/aliases/zalando
+
+for fun in "${functs[@]}"; do
     if [ -d $fun ]; then
         for file in $fun/*; do
             source "$file"
@@ -22,7 +25,7 @@ for fun in $functs; do
     fi
 done
 
-for als in $aliases; do
+for als in "${aliases[@]}"; do
     if [ -d $als ]; then
         for file in $als/*; do
             source "$file"
@@ -30,7 +33,7 @@ for als in $aliases; do
     fi
 done
 
-for exc in $execs; do
+for exc in "${execs[@]}"; do
    export PATH=$PATH:"$exc"
 done
 
