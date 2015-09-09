@@ -1,0 +1,8 @@
+#!/bin/bash
+# Sends an ACTION_VIEW Intent to a device through adb
+if [[ $# -ne 1 ]]; then
+    echo "Usage: av \"custom://data-uri\""
+    exit 1
+else
+    adb shell am start -a android.intent.action.VIEW -d "$1"
+fi
