@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# https://support.apple.com/en-us/HT202516
+sudo killall -HUP mDNSResponder
