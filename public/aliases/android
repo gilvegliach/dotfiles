@@ -2,3 +2,4 @@ alias curr_activity="adb shell dumpsys window windows | grep -E 'mCurrentFocus|m
 alias dex2jar='d2j-dex2jar.sh'
 alias i='adb install'
 alias u='adb uninstall'
+alias enable-ga-logging='adb shell setprop log.tag.GAv4 DEBUG'
