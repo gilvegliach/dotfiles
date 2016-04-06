@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+parts=(${1//./ })
+
+function decode {
+  rem=$((${#1} % 4))
+  if [[ $rem -eq 2 ]]; then s="$1"'=='
+  elif [[ $rem -eq 3 ]]; then s="$1"'='
+  else s="$1"; fi
+  (echo $s | base64 -D)
+}
+
+function hex {
+  echo -n "$1" | perl -pe 's/(.)/sprintf("\\x%x", ord($1))/eg; END {print "\n"}'
+}
+
+echo Header
+decode ${parts[0]} | jq
+echo -e "\nPayload"
+decode ${parts[1]} | jq
+echo -e "\nSignature"
+hex $(decode ${parts[2]})
