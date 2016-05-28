@@ -17,13 +17,13 @@ is_nullglob_enabled=$?
 # string, rather than to the patterns themselves
 shopt -s nullglob
 
-root="~/Scripts"
-functs=( `eval echo "${root}/{public,private}/functions"` )
-aliases=( `eval echo "${root}/{public,private}/aliases"` ) 
-execs=( `eval echo "${root}/{public,private}/executables"` ) 
+root="$HOME/Scripts"
+functs=( $(eval echo "${root}/{public,private}/functions") )
+aliases=( $(eval echo "${root}/{public,private}/aliases") ) 
+execs=( $(eval echo "${root}/{public,private}/executables") ) 
 
 for fun in "${functs[@]}"; do
-    if [ -d $fun ]; then
+    if [ -d "$fun" ]; then
         for file in $fun/*; do
             source "$file"
         done
@@ -31,7 +31,7 @@ for fun in "${functs[@]}"; do
 done
 
 for als in "${aliases[@]}"; do
-    if [ -d $als ]; then
+    if [ -d "$als" ]; then
         for file in $als/*; do
             source "$file"
         done
