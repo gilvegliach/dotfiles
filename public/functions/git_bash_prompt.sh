@@ -130,7 +130,7 @@ function set_bash_prompt () {
   
   # Set the bash prompt variable.
   local CW=$(date +%V)
-  PS1="[${CW}, \D{%a, %d %b %y}, \A] \W ${BRANCH}${PROMPT_SYMBOL} "
+  PS1="[\A \D{%d/%m %u} ${CW}] \W ${BRANCH}${PROMPT_SYMBOL} "
 }
 
 # Tell bash to execute this function just before displaying its prompt.
