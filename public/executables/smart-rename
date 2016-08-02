@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+name="$1"
+special=( in at for the and with by of )
+
+if [[ ! -e "$name" ]]; then
+   echo "Usage: smart-rename <file>"
+   exit 1
+fi
+
+tokens=$(sed -e "s/_/ /g" <<<"$name")
+for token in $tokens; do
+    if [[ ! ${special[@]} =~ "$token" ]]; then 
+        token="$(tr '[:lower:]' '[:upper:]' <<< ${token:0:1})${token:1}"
+    fi
+    result="$result $token"
+done
+result="${result:1}"
+
+read -r -p "-> $result ? [y/N] " response
+case $response in
+    [yY]) 
+        mv "$name" "$result"
+    ;;
+esac
