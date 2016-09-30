@@ -18,28 +18,19 @@ is_nullglob_enabled=$?
 shopt -s nullglob
 
 root="$HOME/Scripts"
-functs=( $(eval echo "${root}/{public,private}/functions") )
-aliases=( $(eval echo "${root}/{public,private}/aliases") ) 
-execs=( $(eval echo "${root}/{public,private}/executables") ) 
+bin=( $(eval echo "${root}/{public,private}/bin") ) 
+sourced=( $(eval echo "${root}/{public,private}/sourced") )
 
-for fun in "${functs[@]}"; do
-    if [ -d "$fun" ]; then
-        for file in $fun/*; do
+for folder in "${sourced[@]}"; do
+    if [ -d "$folder" ]; then
+        for file in $folder/*; do
             source "$file"
         done
     fi
 done
 
-for als in "${aliases[@]}"; do
-    if [ -d "$als" ]; then
-        for file in $als/*; do
-            source "$file"
-        done
-    fi
-done
-
-for exc in "${execs[@]}"; do
-   export PATH=$PATH:"$exc"
+for folder in "${bin[@]}"; do
+   export PATH="$PATH:$folder"
 done
 
 # Restore nullglob
@@ -48,10 +39,7 @@ if [ $is_nullglob_enabled -ne 0 ]; then
 fi
 
 unset is_null_glob
-unset fun
-unset als
-unset exc
-unset root
-unset functs
-unset execs
+unset folder
+unset bin
+unset sourced
 unset file
