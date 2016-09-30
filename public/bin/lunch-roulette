@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+a=( pasta lido italian sushi russian soup mexican indian la-piccola )
+len=${#a[@]}
+echo ${a[$((RANDOM % len))]}
