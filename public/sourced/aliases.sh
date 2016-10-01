@@ -15,7 +15,6 @@ alias xml-formatter='xmllint --format -'
 alias cppwd='echo -n "$(pwd)" | pbcopy'
 
 # Git
-alias g='git'
 alias grm='git rm'
 alias gci='git commit'
 alias gco='git checkout'
@@ -41,7 +40,7 @@ alias gclone='git clone'
 # Android
 alias curr_activity="adb shell dumpsys window windows | grep -E 'mCurrentFocus|mFocusedApp'"
 alias dex2jar='d2j-dex2jar.sh'
-alias i='adb install'
-alias u='adb uninstall'
+alias ai='adb install'
+alias au='adb uninstall'
 alias enable-ga-logging='adb shell setprop log.tag.GAv4 DEBUG'
 alias adb-wifi='echo "Attach a device..."; adb tcpip 5555 && (adb shell ip route get 8.8.8.8 | cut -f8 -d\  | tr -cd [:print:]; echo :5555 ) | xargs adb connect'
