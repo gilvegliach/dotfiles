@@ -1,14 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
-# Source this file in your .profile or .bash_profile. This file
-# imports bash functions and aliases and adds executables to PATH
+# Source this file in your .profile or .bash_profile.
 #
-
-# Brace expansion is evaluated before parameter expansion, so we
-# use eval to evaluate the assigments twice: it first expands the
-# parameters and then performs the brace expansion during the eval.
-# The results are put in arrays to make it easier to loop through
-
 # Remember if nullglob is enabled (zero)
 shopt -q nullglob
 is_nullglob_enabled=$?
@@ -18,8 +11,8 @@ is_nullglob_enabled=$?
 shopt -s nullglob
 
 root="$HOME/Scripts"
-bin=( $(eval echo "${root}/{public,private}/bin") ) 
-sourced=( $(eval echo "${root}/{public,private}/sourced") )
+bin=( "$root/public/bin" "$root/private/bin" ) 
+sourced=( "$root/public/sourced" "$root/private/sourced" )
 
 for folder in "${sourced[@]}"; do
     if [ -d "$folder" ]; then
