@@ -4,15 +4,7 @@
 #
 #   Set the bash prompt according to:
 #    * the branch/status of the current git repository
-#    * the branch of the current subversion repository
 #    * the return value of the previous command
-# 
-# USAGE:
-#
-#   1. Save this file as ~/.git_bash_prompt
-#   2. Add the following line to the end of your ~/.profile or ~/.bash_profile:
-#        . ~/.git_bash_prompt
-#
 
         RED="\[\e[0;31m\]"
      BG_RED="\[\e[41m\]"
