@@ -25,8 +25,10 @@ function is_git_repository {
 # Determine the branch/state information for this git repository.
 function set_git_branch {
   git_status="$(git status 2> /dev/null)"
-
-  if [[ ${git_status} =~ "working tree clean" ]]; then
+ 
+  # RHS of =~ in quotes matches literally instead of regex
+  # See: https://github.com/koalaman/shellcheck/wiki/SC2076
+  if [[ ${git_status} =~ working\ (tree|directory)\ clean ]]; then
     state="${GREEN}"
   elif [[ ${git_status} =~ "Changes to be committed" ]]; then
     state="${YELLOW}"
