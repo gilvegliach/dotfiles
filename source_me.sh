@@ -10,13 +10,14 @@ is_nullglob_enabled=$?
 # string, rather than to the patterns themselves
 shopt -s nullglob
 
-root="$HOME/Scripts"
+root="$HOME/dotfiles"
 bin=( "$root/public/bin" "$root/private/bin" ) 
 sourced=( "$root/public/sourced" "$root/private/sourced" )
 
 for folder in "${sourced[@]}"; do
     if [ -d "$folder" ]; then
         for file in $folder/*; do
+            # shellcheck source=/dev/null
             source "$file"
         done
     fi
