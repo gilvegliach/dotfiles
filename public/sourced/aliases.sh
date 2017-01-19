@@ -38,6 +38,7 @@ alias grebase='git rebase'
 alias gmerge='git merge'
 alias gclone='git clone'
 alias gremote='git remote'
+alias gsc='git checkout $(git branch | fzf)'
 
 # Android
 alias curr_activity="adb shell dumpsys window windows | grep -E 'mCurrentFocus|mFocusedApp'"
