@@ -8,3 +8,6 @@ function show() {
         echo "$1 is not a file"
     fi
 }
+
+# Use Commands for autocompletion of show function's input
+complete -c show
