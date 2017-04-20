@@ -2,11 +2,20 @@ execute pathogen#infect()
 
 syntax on
 filetype plugin indent on
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 
 set wildmode=list:longest
+
+" show cursor row and column position
+set ruler
+
+" show always status bar
+set laststatus=2
+
+" no beeping
+set visualbell
 
 colorscheme sprinkles
 
