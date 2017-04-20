@@ -6,6 +6,8 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
+set wildmode=list:longest
+
 colorscheme sprinkles
 
 " set files with extension .md to be recognized as markdown.
