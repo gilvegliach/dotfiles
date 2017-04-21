@@ -1,5 +1,6 @@
 # Generic
 alias desk='cd ~/Desktop'
+alias home='cd ~'
 alias cd..='cd ..'
 alias ..='cd ..'
 alias ...='cd ../..'
