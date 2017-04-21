@@ -8,6 +8,9 @@ set expandtab
 
 set wildmode=list:longest
 
+" enable mouse support (press option and click)
+set mouse=a
+
 " show cursor row and column position
 set ruler
 
