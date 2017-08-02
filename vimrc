@@ -18,7 +18,11 @@ set ruler
 set laststatus=2
 
 " no beeping
-set visualbell
+" set visualbell
+
+" make backspace work normally in insert mode
+set backspace=indent,eol,start
+
 
 colorscheme sprinkles
 
