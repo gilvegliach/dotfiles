@@ -183,6 +183,6 @@ hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reload_config):start()
 hs.alert.show("Config loaded")
 
 -- show window hints
-hs.hotkey.bind(mods, 'i', function()
+hs.hotkey.bind(mods, 'o', function()
     hs.hints.windowHints()
 end)
