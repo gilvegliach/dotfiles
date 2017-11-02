@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
 set -e
-for f in $(ls); do 
-  cd $f; 
-  echo "> git pull in $f"
+# Pull only subdirectories
+for f in $(ls -d */); do 
+  cd $f;
+  echo "> $f:"
+  if [ "$1" = "-d" ]; then
+    git checkout development
+  fi
   git pull
   cd -
+  echo
 done
