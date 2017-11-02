@@ -14,6 +14,8 @@ alias cw='date +%V'
 alias json-formatter='python -m json.tool'
 alias xml-formatter='xmllint --format -'
 alias cppwd='echo -n "$(pwd)" | pbcopy'
+alias rm='rm -i'
+alias diff='colordiff'
 
 # Git
 alias grm='git rm'
