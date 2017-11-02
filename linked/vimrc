@@ -1,7 +1,15 @@
 execute pathogen#infect()
 
 " ,r to execute current line
-nnoremap ,r :.w !bash<CR>
+nmap ,r :exec '!'.getline('.')<CR>
+",c to copy to Mac clipboard
+vmap ,c :w !pbcopy<CR>
+"c-s to save file
+nmap <c-s> :w<CR>
+vmap <c-s> <Esc><c-s>gv
+imap <c-s> <Esc><c-s>
+
+nmap <c-s> :w<CR>
 
 syntax on
 filetype plugin indent on
@@ -11,8 +19,6 @@ set expandtab
 
 set wildmode=list:longest
 
-" enable mouse support (press option and click)
-set mouse=a
 
 " show cursor row and column position
 set ruler
@@ -44,3 +50,12 @@ set number
 "let g:syntastic_auto_loc_list = 1
 "let g:syntastic_check_on_open = 1
 "let g:syntastic_check_on_wq = 0
+"
+
+" Autoreload vimrc
+"if has ('autocmd') " Remain compatible with earlier versions
+" augroup vimrc     " Source vim configuration upon save
+"    autocmd! BufWritePost $MYVIMRC source % | echom "Reloaded " . $MYVIMRC | redraw
+"    autocmd! BufWritePost $MYGVIMRC if has('gui_running') | so % | echom "Reloaded " . $MYGVIMRC | endif | redraw
+"  augroup END
+"endif " has autocmd
