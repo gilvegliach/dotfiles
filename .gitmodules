@@ -4,3 +4,9 @@
 [submodule "linked/vim/bundle/sprinkles"]
 	path = linked/vim/bundle/sprinkles
 	url = git@github.com:ajgrf/sprinkles.git
+[submodule "linked/vim/bundle/vim-easymotion"]
+	path = linked/vim/bundle/vim-easymotion
+	url = git@github.com:easymotion/vim-easymotion.git
+[submodule "linked/vim/bundle/vim-vividchalk"]
+	path = linked/vim/bundle/vim-vividchalk
+	url = git@github.com:tpope/vim-vividchalk.git
