@@ -1,6 +1,7 @@
 # Generic
 alias desk='cd ~/Desktop'
 alias home='cd ~'
+alias dotfiles='cd ~/dotfiles'
 alias cd..='cd ..'
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -16,6 +17,7 @@ alias xml-formatter='xmllint --format -'
 alias cppwd='echo -n "$(pwd)" | pbcopy'
 alias rm='rm -i'
 alias diff='colordiff'
+alias v='vim'
 
 # Git
 alias grm='git rm'

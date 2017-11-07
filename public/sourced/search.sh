@@ -11,11 +11,11 @@ function i() {
     "https://www.google.com/search?tbm=isch&q=$keywords"
 }
 
-function v() {
-  keywords="$@"
-  open -a "Google Chrome" \
-   "http://www.youtube.com/results?search_query=$keywords" 
-}
+#function v() {
+#  keywords="$@"
+#  open -a "Google Chrome" \
+#   "http://www.youtube.com/results?search_query=$keywords" 
+#}
 
 function m() {
   keywords="$@"
