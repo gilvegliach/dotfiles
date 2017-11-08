@@ -45,6 +45,9 @@ alias gclone='git clone'
 alias gremote='git remote'
 alias gsc='git checkout $(git branch | fzf)'
 alias gdel='git branch -d $(git branch | fzf)'
+alias gsub='git submodule'
+alias gsfp='git submodule foreach "git pull"'
+alias gsadd='git submodule add'
 
 # Android
 alias curr_activity="adb shell dumpsys window windows | grep -E 'mCurrentFocus|mFocusedApp'"
