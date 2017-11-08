@@ -1,3 +1,4 @@
 # Machine private scripts
 private/*
 vim/.netrwhist
+.DS_Store
