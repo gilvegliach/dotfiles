@@ -1,9 +1,15 @@
 execute pathogen#infect()
 
+" Use comma for leader
+let mapleader = ","
+
+" Use single leader in easymotion
+map <leader> <Plug>(easymotion-prefix)
+
 " ,r to execute current line
-nmap ,r :exec '!'.getline('.')<CR>
+nmap <leader>r :exec '!'.getline('.')<CR>
 ",c to copy to Mac clipboard
-vmap ,c :w !pbcopy<CR>
+vmap <leader>c :w !pbcopy<CR>
 "c-s to save file
 nmap <c-s> :w<CR>
 vmap <c-s> <Esc><c-s>gv
