@@ -37,3 +37,22 @@ unset folder
 unset bin
 unset sourced
 unset file
+
+
+# crate symbolic links for files in dotfiles/linked
+[[ ! -f "$HOME/.gitignore_global" ]] \
+  && ln -s "$root/linked/gitignore_global" "$HOME/.gitignore_global" \
+  && git config --global core.excludesfile "$HOME/.gitignore_global"
+
+[[ -d "$HOME/.hammerspoon" ]] && [[ ! -f "$HOME/.hammerspoon/init.lua" ]] \
+  && ln -s "$root/linked/init.lua" "$HOME/.hammerspoon/init.lua"
+
+[[ ! -f "$HOME/.inputrc" ]] \
+  && ln -s "$root/linked/inputrc" "$HOME/.inputrc"
+
+[[ ! -f "$HOME/.vimrc" ]] \
+  && ln -s "$root/linked/vimrc" "$HOME/.vimrc"
+
+[[ ! -d "$HOME/.vim" ]] \
+  && ln -s "$root/linked/vim" "$HOME/.vim"
+
