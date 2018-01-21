@@ -18,6 +18,9 @@ alias cppwd='echo -n "$(pwd)" | pbcopy'
 alias rm='rm -i'
 alias diff='colordiff'
 alias v='vim'
+alias date_readable='date +"%Y-%m-%d_%H:%M.%S"'
+
+
 
 # Git
 alias grm='git rm'
