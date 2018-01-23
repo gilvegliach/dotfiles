@@ -7,7 +7,7 @@ for f in $(ls -d */); do
   if [ "$1" = "-d" ]; then
     git checkout development
   fi
-  git pull
+  git pull --rebase
   cd -
   echo
 done
