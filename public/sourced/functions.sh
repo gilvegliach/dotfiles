@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+function showcert {
+  local cert="$1"
+  echo | openssl s_client -servername "$cert" -connect "${cert}:443" 2>/dev/null | openssl x509 -text
+}
+
 function base64decode {
   __rem=$((${#1} % 4))
   if [[ $rem -eq 2 ]]; then __s="$1"'=='
