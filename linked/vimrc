@@ -21,6 +21,12 @@ nmap <leader>r :exec '!'.getline('.')<CR>
 ",c to copy to Mac clipboard
 vmap <leader>c :w !pbcopy<CR>
 
+" expand current directory
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+
+" cursor can go past last char
+set virtualedit=all
+
 syntax on
 filetype plugin indent on
 set tabstop=2
