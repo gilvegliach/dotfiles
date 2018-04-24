@@ -1,3 +1,0 @@
-# Turns off sending signal stop with control-s
-bind -r '\C-s'
-stty -ixon
