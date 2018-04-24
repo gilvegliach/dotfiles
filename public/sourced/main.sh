@@ -8,4 +8,7 @@ PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; h
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_OPTS="--no-color"
 
+AUTOJUMP="/usr/local/etc/profile.d/autojump.sh"
+[[ -s "$AUTOJUMP" ]] && . "$AUTOJUMP"
+
 setjdk 1.8 2>/dev/null
