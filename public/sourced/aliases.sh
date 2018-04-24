@@ -19,8 +19,7 @@ alias rm='rm -i'
 alias diff='colordiff'
 alias v='vim'
 alias date_readable='date +"%Y-%m-%d_%H:%M.%S"'
-
-
+alias r='fc -s'
 
 # Git
 alias grm='git rm'
