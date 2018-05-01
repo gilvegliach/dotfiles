@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -e
+
+if [[ -z "$WORK_GIT_EMAIL" ]] || [[ -z "$WORK_GIT_USER" ]] || [[ -z "$WORK_GIT_REGEX" ]]; then
+  echo "[WARN] Check disabled. You must define WORK_GIT_EMAIL, WORK_GIT_USER, and WORK_GIT_REGEX"
+  exit 0
+fi
+
+
+origin=$(git remote get-url origin)
+email=$(git config --get user.email)
+user=$(git config --get user.name)
+
+if [[ "$origin" =~ $WORK_GIT_REGEX ]]; then
+  if [[ "$email" != "$WORK_GIT_EMAIL" ]]; then
+    echo "Setting $WORK_GIT_EMAIL as git user.email"
+    git config user.email "$WORK_GIT_EMAIL"
+    echo "Setting $WORK_GIT_USER as git user.name"
+    git config user.name "$WORK_GIT_USER"
+  fi
+elif [[ "$email" == "$WORK_GIT_EMAIL" ]]; then
+  echo "[ERROR] Using $email and $user for non-work repo. Aborting..."
+  exit 1
+fi

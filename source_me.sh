@@ -2,6 +2,7 @@
 #
 # Source this file in your .profile or .bash_profile.
 #
+
 # Remember if nullglob is enabled (zero)
 shopt -q nullglob
 is_nullglob_enabled=$?
@@ -38,8 +39,7 @@ unset bin
 unset sourced
 unset file
 
-
-# crate symbolic links for files in dotfiles/linked
+# create symbolic links for files in dotfiles/linked
 [[ ! -f "$HOME/.gitignore_global" ]] \
   && ln -s "$root/linked/gitignore_global" "$HOME/.gitignore_global" \
   && git config --global core.excludesfile "$HOME/.gitignore_global"
@@ -56,3 +56,8 @@ unset file
 [[ ! -d "$HOME/.vim" ]] \
   && ln -s "$root/linked/vim" "$HOME/.vim"
 
+# create git hooks directory
+if [[ ! -d "$HOME/.git_hooks" ]]; then
+  ln -s "$root/linked/git_hooks" "$HOME/.git_hooks"
+  git config --global core.hooksPath "$HOME/.git_hooks"
+fi
