@@ -1,3 +1,34 @@
+" Recursive search for files with :find
+set path+=**
+" Nice menu for find search
+set wildmenu
+
+" tree view in file browser
+let g:netrw_liststyle=3
+
+" Vundle
+set nocompatible
+filetype off
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+" syntax auto-completion
+Plugin 'Valloric/YouCompleteMe'
+" GDB
+"Plugin 'vim-scripts/Conque-GDB'
+let g:ConqueTerm_Color = 2         " 1: strip color after 200 lines, 2: always with color
+let g:ConqueTerm_CloseOnEnd = 1    " close conque when program ends running
+let g:ConqueTerm_StartMessages = 0 " display warning messages if conqueTerm is configured incorrectly  
+
+" All of your Plugins must be added before the following line
+call vundle#end()
+filetype plugin indent on
+set encoding=utf-8
+" ~Vundle
+
 execute pathogen#infect()
 
 " cursor as | in insert mode
@@ -9,7 +40,7 @@ let &t_EI = "\<esc>[2 q"
 let mapleader = ","
 
 " Control-t to save
-nmap <c-t> :w<CR> 
+"nmap <c-t> :w<CR> 
 imap <c-t> <Esc>:w<CR>
 vmap <c-t> <Esc>:w<CR>
 
@@ -17,9 +48,9 @@ vmap <c-t> <Esc>:w<CR>
 map <leader> <Plug>(easymotion-prefix)
 
 " ,r to execute current line
-nmap <leader>r :exec '!'.getline('.')<CR>
+"nmap <leader>r :exec '!'.getline('.')<CR>
 ",c to copy to Mac clipboard
-vmap <leader>c :w !pbcopy<CR>
+"vmap <leader>c :w !pbcopy<CR>
 
 " expand current directory
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
@@ -28,7 +59,7 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 set virtualedit=all
 
 syntax on
-filetype plugin indent on
+"filetype plugin indent on
 set tabstop=2
 set shiftwidth=2
 set expandtab
@@ -48,14 +79,24 @@ set laststatus=2
 " make backspace work normally in insert mode
 set backspace=indent,eol,start
 
-
-colorscheme sprinkles
+" A bit dark on ubuntu
+" colorscheme sprinkles
 
 " set files with extension .md to be recognized as markdown.
 au BufNewFile,BufRead *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=markdown
 
 " turn on line number
 set number
+
+" -D_GLIBCXX_USE_CXX11_ABI=0 because gdb otherwise can't print global variables
+autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ -D_GLIBCXX_USE_CXX11_ABI=0 -std=c++14 -g '.shellescape('%').' -o '.shellescape('%:r')<CR>
+autocmd filetype cpp nnoremap <F5> :exec '!./'.shellescape('%:r')<CR>
+autocmd filetype cpp nnoremap <F6> :exec '!gdb ./'.shellescape('%:r')<CR>
+
+nnoremap <F5> :exec '!python '.shellescape('%')<CR>
+
+" Force saving files that require root permission 
+cnoremap w!! w !sudo tee > /dev/null %
 
 " Syntastic, syntax checker
 "set statusline+=%#warningmsg#

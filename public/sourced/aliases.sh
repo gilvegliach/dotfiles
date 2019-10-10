@@ -21,6 +21,14 @@ alias v='vim'
 alias date_readable='date +"%Y-%m-%d_%H:%M.%S"'
 alias r='fc -s'
 
+# Redshift
+alias day='redshift -O 6500'
+alias night='redshift -O 3400'
+
+# Clipboard
+alias clipc='xclip -selection clipboard'
+alias clipp='xclip -o'
+
 # Git
 alias grm='git rm'
 alias gci='git commit'
@@ -58,3 +66,6 @@ alias ai='adb install'
 alias au='adb uninstall'
 alias enable-ga-logging='adb shell setprop log.tag.GAv4 DEBUG'
 alias adb-wifi='echo "Attach a device..."; adb tcpip 5555 && (adb shell ip route get 8.8.8.8 | cut -f8 -d\  | tr -cd [:print:]; echo :5555 ) | xargs adb connect'
+
+# Codeforces
+alias cf='git clone git@github.com:gilvegliach/CF.git'

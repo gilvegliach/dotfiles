@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-INTERFACE="en0"
+INTERFACE="wlp2s0"
 
 function mac_add_delta() {
   local mac="0x${1//\:/}"
@@ -16,10 +16,17 @@ else
   DELTA="+1"
 fi
 
-MAC=$(ifconfig "$INTERFACE" | grep ether | tr -d ' \t' | cut -c 6-42)
+MAC=$(ifconfig "$INTERFACE" | grep -i ether | tr -d ' \t' | cut -c 31- )
 NEW_MAC=$(mac_add_delta "$MAC" "$DELTA")
 
 echo "$INTERFACE old mac: $MAC"
 echo "$INTERFACE new mac: $NEW_MAC"
 echo "Applying setting with sudo"
-sudo ifconfig "$INTERFACE" ether "$NEW_MAC"
+
+# Mac
+#sudo ifconfig "$INTERFACE" ether "$NEW_MAC"
+
+# Linux
+sudo ifconfig "$INTERFACE" down
+sudo ifconfig "$INTERFACE" hw ether "$NEW_MAC"
+sudo ifconfig "$INTERFACE" up

@@ -1,11 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/Users/gvegliach/Scripts/private/aliases'
-let g:netrw_dirhist_2='/Users/gvegliach/Scripts/public/aliases'
-let g:netrw_dirhist_3='/Users/gvegliach/Scripts/private/executables'
-let g:netrw_dirhist_4='/Users/gvegliach/Scripts/private/aliases'
-let g:netrw_dirhist_5='/Users/gvegliach/Desktop/Code/Zalando/Shop/cuxy-eviction-service/resources'
-let g:netrw_dirhist_6='/Users/gvegliach/Desktop'
-let g:netrw_dirhist_7='/Users/gvegliach/.vim'
-let g:netrw_dirhist_8='/Users/gvegliach'
-let g:netrw_dirhist_9='/Users/vegliach/Desktop/Test'
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/home/gilvegliach'
