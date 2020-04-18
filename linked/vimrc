@@ -1,10 +1,11 @@
 " Recursive search for files with :find
 set path+=**
+
 " Nice menu for find search
 set wildmenu
 
-" tree view in file browser
-let g:netrw_liststyle=3
+" Tree view in file browser
+"let g:netrw_liststyle=3
 
 " Vundle
 set nocompatible
@@ -31,88 +32,83 @@ set encoding=utf-8
 
 execute pathogen#infect()
 
+" Change swap files directory
+set directory=~/.vim/swapfiles//
+
 " cursor as | in insert mode
 let &t_SI = "\<esc>[5 q"
 let &t_SR = "\<esc>[3 q"
 let &t_EI = "\<esc>[2 q"
 
-" Use comma for leader
-let mapleader = ","
+" Switch buffers quickly
+map <F9> :bprevious<CR>
+imap <F9> <Esc>:bprevious<CR>
+vmap <F9> <Esc>:bprevious<CR>
+map <F10> :bnext<CR>
+imap <F10> <Esc>:bnext<CR>
+vmap <F10> <Esc>:bnext<CR>
 
 " Control-t to save
 "nmap <c-t> :w<CR> 
 imap <c-t> <Esc>:w<CR>
 vmap <c-t> <Esc>:w<CR>
 
-" Use single leader in easymotion
-map <leader> <Plug>(easymotion-prefix)
-
-" ,r to execute current line
-"nmap <leader>r :exec '!'.getline('.')<CR>
-",c to copy to Mac clipboard
-"vmap <leader>c :w !pbcopy<CR>
-
-" expand current directory
+" Expand current directory
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
-" cursor can go past last char
+" Cursor can go past last char
 set virtualedit=all
 
+" Fixes some bad terminal
+set background=dark
+
+let mapleader = " "
 syntax on
-"filetype plugin indent on
+
+" Filetype plugin indent on
 set tabstop=2
 set shiftwidth=2
 set expandtab
 
 set wildmode=list:longest
 
-
-" show cursor row and column position
+" Show cursor row and column position
 set ruler
 
-" show always status bar
+" Show always status bar
 set laststatus=2
 
-" no beeping
-" set visualbell
-
-" make backspace work normally in insert mode
+" Make backspace work normally in insert mode
 set backspace=indent,eol,start
 
-" A bit dark on ubuntu
-" colorscheme sprinkles
-
-" set files with extension .md to be recognized as markdown.
+" Set files with extension .md to be recognized as markdown.
 au BufNewFile,BufRead *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=markdown
 
-" turn on line number
+" Turn on line number
 set number
-
-" -D_GLIBCXX_USE_CXX11_ABI=0 because gdb otherwise can't print global variables
-autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ -D_GLIBCXX_USE_CXX11_ABI=0 -std=c++14 -g '.shellescape('%').' -o '.shellescape('%:r')<CR>
-autocmd filetype cpp nnoremap <F5> :exec '!./'.shellescape('%:r')<CR>
-autocmd filetype cpp nnoremap <F6> :exec '!gdb ./'.shellescape('%:r')<CR>
-
-nnoremap <F5> :exec '!python '.shellescape('%')<CR>
 
 " Force saving files that require root permission 
 cnoremap w!! w !sudo tee > /dev/null %
 
-" Syntastic, syntax checker
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
+" Use system clipboard to copy/paste. Needs vim-gtk
+set clipboard=unnamedplus
 
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-"
+" Automatically source .vimrc on write
+autocmd bufwritepost .vimrc source $MYVIMRC | redraw
 
-" Autoreload vimrc
-"if has ('autocmd') " Remain compatible with earlier versions
-" augroup vimrc     " Source vim configuration upon save
-"    autocmd! BufWritePost $MYVIMRC source % | echom "Reloaded " . $MYVIMRC | redraw
-"    autocmd! BufWritePost $MYGVIMRC if has('gui_running') | so % | echom "Reloaded " . $MYGVIMRC | endif | redraw
-"  augroup END
-"endif " has autocmd
+" Leader s: invoke search char plug in
+map <Leader> <Plug>(easymotion-prefix)
+
+" Programming bindings
+
+autocmd filetype cpp nnoremap <F2> :YcmCompleter GoTo<CR>
+autocmd filetype cpp nnoremap <F3> :YcmCompleter FixIt<CR>
+" -D_GLIBCXX_USE_CXX11_ABI=0 because gdb otherwise can't print global variables
+autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ -DGIL -D_GLIBCXX_USE_CXX11_ABI=0 -std=c++14 -g '.shellescape('%').' -o '.shellescape('%:r')<CR>
+autocmd filetype cpp nnoremap <F5> :exec '!./'.shellescape('%:r')<CR>
+autocmd filetype cpp nnoremap <F6> :exec '!gdb ./'.shellescape('%:r')<CR>
+
+autocmd filetype python nnoremap <F5> :exec '!python '.shellescape('%')<CR>
+
+" Set a default YCM config to avoid error on loading cpp files.
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'

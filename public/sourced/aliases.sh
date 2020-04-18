@@ -25,6 +25,10 @@ alias r='fc -s'
 alias day='redshift -O 6500'
 alias night='redshift -O 3400'
 
+# Touch screen
+alias touchscreen='xinput enable 12'
+alias notouchscreen='xinput enable 13'
+
 # Clipboard
 alias clipc='xclip -selection clipboard'
 alias clipp='xclip -o'
@@ -69,3 +73,6 @@ alias adb-wifi='echo "Attach a device..."; adb tcpip 5555 && (adb shell ip route
 
 # Codeforces
 alias cf='git clone git@github.com:gilvegliach/CF.git'
+
+# Fix cursor jumping around when typing
+alias fix-cursor='syndaemon -t -k -i 1'

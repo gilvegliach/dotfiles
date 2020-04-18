@@ -56,6 +56,10 @@ unset file
 [[ ! -d "$HOME/.vim" ]] \
   && ln -s "$root/linked/vim" "$HOME/.vim"
 
+# YouCompleteMe C++ default options, adjusted on competitive programming.
+[[ ! -f "$HOME/.ycm_extra_conf.py" ]] \
+  && ln -s "$root/linked/ycm_extra_conf.py" "$HOME/.ycm_extra_conf.py"
+
 # create git hooks directory
 if [[ ! -d "$HOME/.git_hooks" ]]; then
   ln -s "$root/linked/git_hooks" "$HOME/.git_hooks"
