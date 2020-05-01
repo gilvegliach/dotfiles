@@ -1,3 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/home/gilvegliach/Desktop/cp'
+let g:netrw_dirhist_2='/home/gilvegliach/.Xresources-regolith'
+let g:netrw_dirhist_3='/home/gilvegliach/.Xresources-regolith/style'
+let g:netrw_dirhist_4='/home/gilvegliach/.Xresources-regolith'
+let g:netrw_dirhist_5='/home/gilvegliach'
+let g:netrw_dirhist_6='/etc/regolith/styles'
+let g:netrw_dirhist_7='/etc'
